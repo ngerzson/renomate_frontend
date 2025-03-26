@@ -6,19 +6,19 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Világos háttér, vagy módosítható sötétre
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255), // Világos háttér, vagy módosítható sötétre
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20.0),  
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,  // Középre igazítás 
             children: [
               // Logo
               Image.asset(
                 'assets/logo.png', // Helyezd el az ikonodat az assets mappába
-                height: 120, 
+                height: 300, 
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 10),// Szünet a logó és a bejelentkezési mezők között
 
               // Email mező
               TextField(
