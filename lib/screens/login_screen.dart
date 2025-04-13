@@ -1,72 +1,74 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _login() {
+    // Itt jönne az API-hívás, most csak teszthez továbbnavigálunk:
+    Navigator.pushReplacementNamed(context, '/main');
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255), // Világos háttér, vagy módosítható sötétre
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: Padding(
-        padding: EdgeInsets.all(20.0),  
+        padding: const EdgeInsets.all(20.0),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,  // Középre igazítás 
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo
               Image.asset(
-                'assets/logo.png', // Helyezd el az ikonodat az assets mappába
-                height: 300, 
+                'assets/logo.png',
+                height: 300,
               ),
-              SizedBox(height: 10),// Szünet a logó és a bejelentkezési mezők között
+              const SizedBox(height: 10),
 
-              // Email mező
               TextField(
-                decoration: InputDecoration(
+                controller: _emailController,
+                decoration: const InputDecoration(
                   labelText: 'Email or Username',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.email),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-              // Jelszó mező
               TextField(
+                controller: _passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.lock),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-              // Bejelentkezés gomb
               ElevatedButton(
-                onPressed: () {
-                  // Bejelentkezési logika
-                },
+                onPressed: _login,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange, // Narancssárga szín a logóhoz illően
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  backgroundColor: Colors.orange,
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
-                child: Text('LOGIN', style: TextStyle(fontSize: 18, color: Colors.white)),
+                child: const Text('LOGIN', style: TextStyle(fontSize: 18, color: Colors.white)),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
-              // Regisztráció és elfelejtett jelszó linkek
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(
-                    onPressed: () {}, 
-                    child: Text('Forgot Password?')
-                  ),
-                  Text(" | "),
-                  TextButton(
-                    onPressed: () {}, 
-                    child: Text('Sign Up')
-                  ),
+                  TextButton(onPressed: () {}, child: const Text('Forgot Password?')),
+                  const Text(" | "),
+                  TextButton(onPressed: () {}, child: const Text('Sign Up')),
                 ],
               ),
             ],
