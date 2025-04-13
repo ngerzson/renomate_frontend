@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
-import 'screens/main_category_screen.dart'; // Új screen importálása
+import 'screens/main_category_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -17,12 +18,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      // Kezdőképernyő: bejelentkezés
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
-        '/main': (context) => MainCategoryScreen(),
-        // Ide jön majd a subcategory screen is: '/subcategory': (context) => SubcategoryScreen()
+        '/main': (context) => const MainCategoryScreen(),
+        // Fontos: SubcategoryScreen itt nem lehet direkt hívható,
+        // mert `mainCategoryId` paraméter kell neki!
+        // Ehelyett `Navigator.push`-szal kell átadni paraméterrel!
       },
     );
   }
