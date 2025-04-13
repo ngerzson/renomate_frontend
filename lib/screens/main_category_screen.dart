@@ -19,7 +19,7 @@ class MainCategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Válassz fő kategóriát szakember kereséshez'),
+        title: const Text('Válassz fő kategóriát kereséshez'),
         backgroundColor: Colors.orange.shade700,
       ),
       body: GridView.builder(
